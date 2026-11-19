@@ -1,7 +1,10 @@
-import { cp, mkdir, writeFile } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { buildDossier } from './vendor/makefun-frontend.ts';
+import { buildDossier } from "./vendor/makefun-frontend.ts";
+import { cp, mkdir, rm, writeFile } from "node:fs/promises";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+
+// Paths are resolved from this file's directory so the program also runs when launched from any working directory.
+const scriptDir = dirname(fileURLToPath(import.meta.url));
 
 const CAPS = {
   text_max_bytes: 163840,
@@ -10,15 +13,20 @@ const CAPS = {
   app_max_bytes: 50331648,
 };
 
-const scriptDir = dirname(fileURLToPath(import.meta.url));
-const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
-
-async function copyEntry(name: string): Promise<void> {
-  await cp(join(scriptDir, name), join(outDir, name), { recursive: true });
+async function copyEntry(outDir: string): Promise<void> {
+  await mkdir(outDir, { recursive: true });
+  await rm(join(outDir, "app"), { recursive: true, force: true });
+  await rm(join(outDir, "screenshots"), { recursive: true, force: true });
+  for (const name of ["app", "screenshots"]) {
+    await cp(join(scriptDir, name), join(outDir, name), { recursive: true });
+  }
 }
 
-await mkdir(outDir, { recursive: true });
-await copyEntry('app');
-await mkdir(join(outDir, 'screenshots'), { recursive: true });
-await copyEntry('screenshots');
-await writeFile(join(outDir, 'dossier.json'), buildDossier(outDir, CAPS));
+async function main(): Promise<void> {
+  const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+  await copyEntry(outDir);
+  const dossier = buildDossier(outDir, CAPS);
+  await writeFile(join(outDir, "dossier.json"), dossier);
+}
+
+await main();
