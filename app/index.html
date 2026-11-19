@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Trophy Guide — GTA VI (55 Trophies)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <p class="eyebrow">Grand Theft Auto VI &middot; PlayStation 5 &middot; Offline guide</p>
+    <h1>Leonida Trophy Guide</h1>
+    <p class="sub">All 55 official trophies &mdash; tracker, roadmap to the platinum, and a cited guide for every trophy. Progress is saved in your browser.</p>
+    <div class="progress" role="status" aria-label="Trophy progress">
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <p class="progress-text" id="progressText">0 / 55 earned &middot; 0%</p>
+      <p class="grade-counts" id="gradeCounts">Platinum 0/1 &middot; Gold 0/2 &middot; Silver 0/6 &middot; Bronze 0/46</p>
+    </div>
+    <nav class="jump" aria-label="Sections">
+      <a href="#checklist">Checklist</a>
+      <a href="#roadmap">Roadmap to Platinum</a>
+      <a href="#missable">Missable Trophies</a>
+      <a href="#sources">Sources</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="toolbar" aria-label="Tracker controls">
+    <label class="search">Search
+      <input type="search" id="searchBox" placeholder="Search trophy name or description&hellip;" autocomplete="off">
+    </label>
+    <div class="filters" id="filters" role="group" aria-label="Filter trophies">
+      <button type="button" data-filter="all" class="active">All</button>
+      <button type="button" data-filter="story">Story</button>
+      <button type="button" data-filter="missable">Missable</button>
+      <button type="button" data-filter="collectibles">Collectibles</button>
+      <button type="button" data-filter="activities">Activities</button>
+      <button type="button" data-filter="online">Online</button>
+    </div>
+    <label class="spoiler-toggle"><input type="checkbox" id="spoilerToggle"> Spoiler-free mode (hide unearned story trophies)</label>
+    <div class="actions">
+      <button type="button" id="exportBtn">Export progress (JSON)</button>
+      <button type="button" id="importBtn">Import progress</button>
+      <input type="file" id="importFile" accept="application/json,.json" hidden>
+      <button type="button" id="resetBtn">Reset progress</button>
+    </div>
+    <p class="toolbar-note" id="filterNote"></p>
+  </section>
+
+  <section id="detail" class="detail" aria-label="Selected trophy guide" hidden>
+    <div class="detail-head">
+      <h2 id="detailName"></h2>
+      <button type="button" id="detailClose" aria-label="Close guide">&times;</button>
+    </div>
+    <p class="detail-meta" id="detailMeta"></p>
+    <p class="detail-desc" id="detailDesc"></p>
+    <p class="detail-missable" id="detailMissable" hidden></p>
+    <h3>Guide</h3>
+    <p class="detail-guide" id="detailGuide"></p>
+    <h3>Sources</h3>
+    <ul class="detail-sources" id="detailSources"></ul>
+  </section>
+
+  <section id="checklist" aria-label="Trophy checklist">
+    <h2>Trophy checklist <span class="count" id="listCount"></span></h2>
+    <p class="empty" id="onlineEmpty" hidden>The official 55-trophy list has <strong>no online trophies</strong> — every trophy is earned in single-player story, collectibles or activities. Nothing to show under Online.</p>
+    <p class="empty" id="noMatch" hidden>No trophies match this search and filter.</p>
+    <ul class="trophy-list" id="trophyList"></ul>
+  </section>
+
+  <section id="roadmap" aria-label="Roadmap to the platinum">
+    <h2>Roadmap to the platinum</h2>
+    <p>Built from the official trophy descriptions, in the order to earn them. Stage 1 is the story, Stage 2 sweeps the collectibles, Stage 3 clears the activities, and Stage 4 mops up the missable trophies and the platinum itself.</p>
+    <ol class="stages" id="stageList"></ol>
+  </section>
+
+  <section id="missable" aria-label="Missable trophies">
+    <h2>Missable trophies &mdash; do these before they close</h2>
+    <p>Only 4 of the 55 trophies can be missed, all in Stage 4 of the roadmap. Each one is tied to something the story only offers for a limited time.</p>
+    <ul class="missable-list" id="missableList"></ul>
+  </section>
+
+  <section id="sources" aria-label="Sources and honesty note">
+    <h2>Sources &amp; honesty note</h2>
+    <ul>
+      <li><strong>Official trophy list</strong> — PlayStation, as listed by Exophase and PSNProfiles (names, descriptions, grades and PSN counts, agreeing on all 55). This is the source for every name, description, grade and count in this guide.</li>
+      <li><strong>Series precedent (GTA V)</strong> — where a guide mentions how a similar system worked in GTA V, it is labelled as precedent, not as a fact about GTA VI.</li>
+      <li><strong>This guide's own advice</strong> — every guide text is written in the author's own words from the official description; it is not copied from any other guide.</li>
+    </ul>
+    <p class="honest"><strong>Honest note:</strong> Grand Theft Auto VI had not released when this guide was written, so no specific in-game location, map pin or exact step is claimed beyond what the official trophy descriptions state. Anything that needs the game itself to confirm — a shop's street, a spot's exact place, a challenge's exact trigger — is marked as unconfirmed in the guide, and the locations and steps will be confirmed in-game once the game is out.</p>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>Leonida Trophy Guide — an original, fan-made guide. Works fully offline from its own files; no network requests. No Rockstar Games logo, official artwork, box art or game screenshot is used anywhere in this guide.</p>
+    <p>Data: the official 55-trophy PlayStation list (via Exophase / PSNProfiles). Guides are the author's own words.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
